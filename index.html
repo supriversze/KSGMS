@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSGMS - Kerala Smart Grievance Management System</title>
+    <meta name="description"
+        content="An AI-powered platform for reporting public issues and tracking complaint resolution.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <a href="index.html" class="nav-logo" style="text-decoration: none;">
+                <img src="logo.jpg" alt="KSGMS Logo" class="logo-icon logo-img"
+                    onerror="this.src='https://via.placeholder.com/80x30?text=KSGMS'">
+                <span class="logo-text">KSGMS</span>
+            </a>
+            <div class="nav-links">
+                <!-- User Links -->
+                <a href="index.html" class="nav-link active user-only" style="display: none;">Home</a>
+                <a href="my-complaints.html" class="nav-link user-only" style="display: none;">My Complaints</a>
+                <a href="submit-complaint.html" class="nav-link user-only" style="display: none;">Create Complaint</a>
+                <a href="#" class="nav-link user-only" style="display: none;"><i class="fas fa-bell"></i> Notifications</a>
+
+
+                <!-- Guest Links -->
+                <a href="login.html" class="nav-link guest-only">Login</a>
+                
+                <div class="lang-dropdown">
+                    <select class="lang-select">
+                        <option value="en">English</option>
+                        <option value="ml">Malayalam</option>
+                    </select>
+                </div>
+                
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <a href="register.html" class="nav-link btn-register guest-only">Register</a>
+            </div>
+
+            <!-- User Profile Menu (Desktop/Mobile Corner) -->
+            <div class="user-profile-menu user-only" style="display: none; position: relative;">
+                <button id="profileDropdownBtn" class="profile-btn">
+                    <img src="https://ui-avatars.com/api/?name=User&background=1E3A8A&color=fff" alt="User Avatar" class="avatar-sm">
+                    <span class="user-name">User</span> <i class="fas fa-chevron-down caret-icon" style="font-size: 0.75rem;"></i>
+                </button>
+                <div id="profileDropdown" style="display: none; position: absolute; right: 0; top: 130%; background: var(--surface); box-shadow: var(--shadow-lg); border-radius: var(--radius-md); overflow: hidden; min-width: 200px; z-index: 100; border: 1px solid var(--border);">
+                    <a href="profile.html" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; color: var(--text-primary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition);"><i class="fas fa-user" style="color: var(--text-secondary); width: 16px;"></i> Profile</a>
+                    <a href="settings.html" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; color: var(--text-primary); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition);"><i class="fas fa-cog" style="color: var(--text-secondary); width: 16px;"></i> Settings</a>
+                    <div style="height: 1px; background: var(--border); margin: 0;"></div>
+                    <a href="#" id="desktopLogoutBtn" style="display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem; color: #ef4444; text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: var(--transition);"><i class="fas fa-sign-out-alt" style="width: 16px;"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Layout -->
+    <main class="landing-container">
+
+        <!-- Left Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="badge">Government Tech SaaS</div>
+                <h1 class="hero-title">Kerala Smart Grievance <span class="highlight">Management System</span> (KSGMS)
+                </h1>
+                <p class="hero-description">
+                    An AI-powered platform that allows citizens to report public issues, automatically routes complaints
+                    to the correct government department, and enables transparent tracking of complaint resolution.
+                </p>
+
+                <div class="user-profile-section user-only" style="display: none; background: var(--surface); padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem; max-width: 90%; align-items: center; gap: 1.25rem; border: 1px solid var(--border);">
+                    <img src="https://ui-avatars.com/api/?name=User&background=1E3A8A&color=fff" alt="User Avatar" style="width: 65px; height: 65px; border-radius: 50%; box-shadow: var(--shadow-sm);">
+                    <div style="flex: 1;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem;">Welcome back, User!</h3>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary); margin: 0;">Access your full profile and track your grievances.</p>
+                    </div>
+                    <a href="profile.html" class="btn btn-outline" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;"><i class="fas fa-user-circle"></i> View Profile</a>
+                </div>
+
+                <div class="hero-actions">
+                    <button class="btn btn-primary" id="homeSubmitComplaintBtn"><i class="fas fa-paper-plane"></i> Submit Complaint</button>
+                    <a href="login.html" class="btn btn-secondary guest-only" style="text-decoration: none;">Login</a>
+                    <a href="register.html" class="btn btn-outline guest-only" style="text-decoration: none;">Register</a>
+                </div>
+
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                        <span>AI Complaint Classification</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-route"></i></div>
+                        <span>Automatic Department Routing</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <span>Real-Time Complaint Tracking</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Section: AI Assistant Chat UI -->
+        <section class="assistant-section">
+            <div class="chat-card">
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <div class="ai-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h3>AI Assistant</h3>
+                            <span class="status"><span class="status-dot"></span> Online</span>
+                        </div>
+                    </div>
+                    <button class="chat-menu-btn"><i class="fas fa-ellipsis-v"></i></button>
+                </div>
+
+                <div class="chat-body" id="chatBody">
+                    <div class="message ai-message">
+                        <div class="message-content">
+                            Hello! I am the KSGMS AI Assistant. Tell me your issue and I will help you register a
+                            complaint.
+                        </div>
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="input-actions">
+                        <button class="action-btn" title="Upload Photo" id="uploadBtn">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="action-btn" title="Share Location" id="locationBtn">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </button>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="text" id="chatInput" placeholder="Describe your issue here..." autocomplete="off">
+                        <button class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative Elements -->
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>KSGMS</h3>
+                <p>Kerala Smart Grievance Management System</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Kerala Smart Grievance Management System</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
